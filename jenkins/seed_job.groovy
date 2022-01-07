@@ -1,19 +1,19 @@
 import javaposse.jobdsl.dsl.DslException
-import jenkins.model.Jenkins
 import hudson.model.AbstractProject
 
 // Check if AWS credential parameter is passed or not
+import jenkins.model.Jenkins
 def awsCredentialId = getBinding().getVariables()['AWS_CREDENTIAL']
 if (awsCredentialId == null) {
   throw new DslException('Please pass AWS credential parameter ' + 'AWS_CREDENTIAL' )
 }
 
-def sagemakerProjectName = "jenkins-btd-1"
-def sagemakerProjectId = "p-hdzaivmsdryg"
-def sourceModelPackageGroupName = "jenkins-btd-1-p-hdzaivmsdryg"
-def modelExecutionRole = "arn:aws:iam::426907972901:role/service-role/AmazonSageMakerServiceCatalogProductsUseRole"
-def awsRegion = "us-east-2"
-def artifactBucket = "sagemaker-project-p-hdzaivmsdryg"
+def sagemakerProjectName = "pytorch"
+def sagemakerProjectId = "p-762cyrz9rtij"
+def sourceModelPackageGroupName = "pytorch"
+def modelExecutionRole = "arn:aws:iam::205124155157:role/service-role/AmazonSageMakerServiceCatalogProductsUseRole"
+def awsRegion = "us-southeast-1"
+def artifactBucket = "sagemaker-project-p-762cyrz9rtij"
 
 def pipelineName = "sagemaker-" + sagemakerProjectName + "-" + sagemakerProjectId + "-modeldeploy"
 
@@ -58,3 +58,5 @@ pipelineJob(pipelineName) {
     scm("* * * * *")
   }
 }
+
+
