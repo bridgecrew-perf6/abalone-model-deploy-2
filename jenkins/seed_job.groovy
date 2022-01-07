@@ -30,7 +30,7 @@ pipelineJob(pipelineName) {
   description("Sagemaker Model Deploy Pipeline")
   keepDependencies(false)
   authenticationToken('token')
-  concurrentBuild(false)
+  // concurrentBuild(false)
   parameters {
     stringParam("ARTIFACT_BUCKET", artifactBucket, "S3 bucket to store training artifact")
     stringParam("SAGEMAKER_PROJECT_NAME", sagemakerProjectName, "Sagemaker Project Name")
