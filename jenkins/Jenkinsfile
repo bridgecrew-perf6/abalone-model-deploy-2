@@ -46,7 +46,7 @@ pipeline {
     }
     stage('Staging Deploy') {
       steps {
-        withAWS(region:"${AWS_REGION}") {
+        withAWS(region:"${AWS_REGION}",credentials:"${AWS_CREDENTIAL}") {
           cfnUpdate(stack: "${STACK_NAME_DEPLOY_STAGING}",
             file: "${EXPORT_TEMPLATE_NAME}",
             paramsFile: "${EXPORT_TEMPLATE_STAGING_PARAMS}",
@@ -58,7 +58,7 @@ pipeline {
     }
     stage('Test Staging') {
       steps {
-        withAWS(region:"${AWS_REGION}") {
+        withAWS(region:"${AWS_REGION}",credentials:"${AWS_CREDENTIAL}") {
           sh '''python3 test/test.py \
               --import-build-config $EXPORT_TEMPLATE_STAGING_CONFIG \
               --export-test-results $EXPORT_TEST_RESULTS
@@ -74,7 +74,7 @@ pipeline {
     }
     stage('Prod Deploy') {
       steps {
-        withAWS(region:"${AWS_REGION}") {
+        withAWS(region:"${AWS_REGION}",credentials:"${AWS_CREDENTIAL}") {
           cfnUpdate(stack: "${STACK_NAME_DEPLOY_PROD}",
             file: "${EXPORT_TEMPLATE_NAME}",
             paramsFile: "${EXPORT_TEMPLATE_PROD_PARAMS}",
