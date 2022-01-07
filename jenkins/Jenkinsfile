@@ -26,7 +26,8 @@ pipeline {
     }
     stage('Build') {
       steps {
-
+            sh ''' aws s3 ls '''
+            
             sh '''python3 build.py --model-execution-role "$MODEL_EXECUTION_ROLE_ARN" \
                 --model-package-group-name "$SOURCE_MODEL_PACKAGE_GROUP_NAME" \
                 --sagemaker-project-id "$SAGEMAKER_PROJECT_ID" \
