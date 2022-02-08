@@ -9,13 +9,14 @@ if (awsCredentialId == null) {
 }
 
 def sagemakerProjectName = "pytorch"
-def sagemakerProjectId = "p-762cyrz9rtij"
+// def sagemakerProjectId = "p-762cyrz9rtij"
 def sourceModelPackageGroupName = "pytorch"
 def modelExecutionRole = "arn:aws:iam::205124155157:role/service-role/AmazonSageMakerServiceCatalogProductsUseRole"
-def awsRegion = "us-southeast-1"
+def awsRegion = "ap-southeast-1"
 def artifactBucket = "sagemaker-project-p-762cyrz9rtij"
 
-def pipelineName = "sagemaker-" + sagemakerProjectName + "-" + sagemakerProjectId + "-modeldeploy"
+// def pipelineName = "sagemaker-" + sagemakerProjectName + "-" + sagemakerProjectId + "-modeldeploy"
+def pipelineName = "sagemaker-" + sagemakerProjectName + "-modeldeploy"
 
 // Get git details used in JOB DSL so that can be used for pipeline SCM also
 def jobName = getBinding().getVariables()['JOB_NAME']
@@ -34,7 +35,7 @@ pipelineJob(pipelineName) {
   parameters {
     stringParam("ARTIFACT_BUCKET", artifactBucket, "S3 bucket to store training artifact")
     stringParam("SAGEMAKER_PROJECT_NAME", sagemakerProjectName, "Sagemaker Project Name")
-    stringParam("SAGEMAKER_PROJECT_ID", sagemakerProjectId, "Sagemaker Project Id")
+    // stringParam("SAGEMAKER_PROJECT_ID", sagemakerProjectId, "Sagemaker Project Id")
     stringParam("SOURCE_MODEL_PACKAGE_GROUP_NAME", sourceModelPackageGroupName, "Model Package Group Name")
     stringParam("MODEL_EXECUTION_ROLE_ARN", modelExecutionRole, "Role to be used by Model execution.")
     stringParam("AWS_REGION", awsRegion, "AWS region to use for creating entity")
