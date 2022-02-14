@@ -18,11 +18,11 @@ pipeline {
             ).trim()}"""*/
           STACK_NAME_DEPLOY_STAGING = """${sh(
                 returnStdout: true,
-                script: 'echo "sagemaker-${SAGEMAKER_PROJECT_NAME}-deploy-staging"'
+                script: 'echo "sagemaker-pytorch-p-762cyrz9rtij-deploy-staging"'
             ).trim()}"""
           STACK_NAME_DEPLOY_PROD = """${sh(
                 returnStdout: true,
-                script: 'echo "sagemaker-${SAGEMAKER_PROJECT_NAME}-deploy-prod"'
+                script: 'echo "sagemaker-pytorch-p-762cyrz9rtij-deploy-prod"'
             ).trim()}"""
           EXPORT_TEST_RESULTS = 'test-results.json'
   }
